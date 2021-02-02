@@ -18,6 +18,18 @@ body {
   height: 50px;
   position: absolute;
   bottom: 500px;
-  left: 30px;
+  left: 300px;
   background-color: brown;
 }
+
+#obs1  {
+  position: absolute;
+  right: 100px;
+  background-color: black;
+  height: 400px;
+  width: 100px;
+  bottom:0;
+
+}
+
+

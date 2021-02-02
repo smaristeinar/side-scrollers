@@ -1,6 +1,7 @@
 let bg = document.getElementById("bg");
 let bg2 = document.getElementById("bg2");
 let box = document.getElementById("box");
+let obj1 = document.getElementById("obs1");
 let counter = 0;
 let right = 0;
 let timer = setInterval(function () {
@@ -13,7 +14,7 @@ let jumpUp = 500;
 let flag = false;
 
 let jump = function () {
-  console.log("bird");
+  //console.log("bird");
 };
 
 document.addEventListener("keyup", function (evt) {
@@ -22,10 +23,10 @@ document.addEventListener("keyup", function (evt) {
     case "ArrowUp":
       //   setInterval(function () {
       console.log(evt);
-      jumpUp += 10;
+      jumpUp += 30;
       box.style.bottom = jumpUp + "px";
       flag = true;
-    //   }, 500);
+    
   }
 });
 
@@ -39,14 +40,34 @@ function down() {
 
 jump();
 down();
-/*let movebg = function(){
-    counter ++;
-    right +=10;
-    if (right == screen.width) {
-        right = -screen.width + "px";
-        
 
-    }
-    bg.style.right = right + "px";
+//move box to left. jump back to beginning
+let moveObs = function(){
+  counter ++;
+  right +=10;
+  console.log(obj1.style.height);
+  if (right > screen.width) {
+      right = -screen.width + "px";
+      obj1.style.right = "100px";
+      right = 0;
+
+  } if (obj1.style.bottom == box.style.top) {
+    //console.log("game over");
+
+  }
+  obj1.style.right = right + "px";
 }
- */
+
+function move(){
+  setInterval(function () {
+    moveObs();
+  }, 100);
+}
+
+move();
+
+
+
+
+
+
