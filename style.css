@@ -32,4 +32,11 @@ body {
 
 }
 
-
+#obs2 {
+  position: absolute;
+  right: 0;
+  background-color: green;
+  height: 200px;
+  width: 100px;
+  bottom: 0;
+}
