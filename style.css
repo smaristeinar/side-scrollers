@@ -27,7 +27,11 @@ body {
   position: absolute;
   bottom: 500px;
   left: 300px;
-  background-color: brown;
+
+}
+
+#bird {
+  height: 60px;
 }
 
 #obs1 {
