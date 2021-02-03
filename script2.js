@@ -104,7 +104,7 @@ function moveObstacles(obId, height, width, obTopId, obTopHeight) {
     right++;
     ob.style.right = right + "px";
     obTop.style.right = right + "px";
-    //testCollision(odId, height, width, timer);
+    collision(jumpUp, height, right);
     if (right == 300) {
       createObstacle();
     }
@@ -118,9 +118,14 @@ function moveObstacles(obId, height, width, obTopId, obTopHeight) {
 function keepScore () {
   setInterval(() => {
     document.getElementById("score").innerHTML = "Score: " + score;
-    console.log(score);
     score++
   }, 1000);
+}
+
+let collision = function(playerPos, ob1height, obright){
+  if (playerPos < ob1height && playerPos > ob1height + 150) {
+    console.log("GG LOSER ");
+  }
 }
 
 
