@@ -1,13 +1,11 @@
 body {
-
-margin-left: 250px;
-  
+  margin-left: 250px;
 }
 
-#gamewindow{
+#gamewindow {
   display: flex;
   justify-self: center;
-  
+
   width: 800px;
   height: 600px;
   position: absolute;
@@ -32,14 +30,13 @@ margin-left: 250px;
   background-color: brown;
 }
 
-#obs1  {
+#obs1 {
   position: absolute;
   right: 100px;
   background-color: black;
   height: 400px;
   width: 100px;
-  bottom:0;
-
+  bottom: 0;
 }
 
 #obs2 {
@@ -56,4 +53,12 @@ margin-left: 250px;
   position: absolute;
   right: 0;
   bottom: 0;
+}
+
+.obstacleTop {
+  background-color: black;
+  position: absolute;
+  right: 0;
+  /* top: 0; */
+  z-index: 4;
 }
