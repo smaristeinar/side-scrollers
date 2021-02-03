@@ -50,3 +50,10 @@ margin-left: 250px;
   width: 100px;
   bottom: 0;
 }
+
+.obstacle {
+  background-color: black;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
