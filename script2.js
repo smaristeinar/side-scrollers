@@ -1,7 +1,7 @@
 let bg = document.getElementById("bg");
 let box = document.getElementById("box");
 let obj1 = document.getElementById("obs1");
-
+let windowWidth = 800;
 
 let counter = 0;
 let right = 0;
@@ -12,8 +12,10 @@ let jumpUp = 500;
 
 function graivty() {
   setInterval(function () {
-    jumpUp -= 5;
-    box.style.bottom = jumpUp + "px";
+if (jumpUp > 0) {
+  jumpUp -= 5;
+  box.style.bottom = jumpUp + "px";
+}
   },
    100);
 }
@@ -22,8 +24,8 @@ function graivty() {
 let moveObs = function(){
   counter ++;
   right +=10;
-  if (right > screen.width) {
-      right = -screen.width + "px";
+  if (right > windowWidth) {
+      right = -windowWidth + "px";
       obj1.style.right = "100px";
       right = 0;
     } 
@@ -34,11 +36,12 @@ let moveObs = function(){
 function move(){
   setInterval(function () {
     moveObs();
+    console.log()
   }, 100);
 }
 
 let colCheck = function(){
-    if (right == screen.width-300 && jumpUp < 400) {
+    if (right == windowWidth-300 && jumpUp < 400) {
         console.log("gameover");
     }
 }
