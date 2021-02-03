@@ -4,6 +4,7 @@ let obj1 = document.getElementById("obs1");
 const obstacles = document.getElementById("obstacles");
 let windowWidth = 800;
 
+let score = 0;
 let counter = 0;
 let obCounter = 0;
 let right = 0;
@@ -48,8 +49,12 @@ document.addEventListener("keyup", function (evt) {
   if (evt.key == "ArrowUp") {
     jumpUp += 30;
     box.style.bottom = jumpUp + "px";
+    let Sound =  new Audio("flap.mp3");
+    Sound.play();
   }
 });
+
+
 
 function createObstacle() {
   const ob = document.createElement("div");
@@ -66,7 +71,7 @@ function createObstacle() {
   ob.style.width = width + "px";
   const obTopHeight = 1000;
 
-  obTop.style.bottom = height + 100 + "px";
+  obTop.style.bottom = height + 150 + "px";
   obTop.style.height = obTopHeight + "px";
   obTop.style.width = width + "px";
 
@@ -110,7 +115,19 @@ function moveObstacles(obId, height, width, obTopId, obTopHeight) {
     }
   }, 10);
 }
+function keepScore () {
+  setInterval(() => {
+    document.getElementById("score").innerHTML = "Score: " + score;
+    console.log(score);
+    score++
+  }, 1000);
+}
+
 
 // move();
 graivty();
 createObstacle();
+keepScore();
+
+console.log(score);
+
