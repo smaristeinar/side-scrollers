@@ -1,11 +1,15 @@
+* {
+  margin: 0;
+  padding: 0;
+}
 body {
-  margin-left: 250px;
+  display: flex;
+  justify-content: center;
 }
 
 #gamewindow {
   display: flex;
   justify-self: center;
-
   width: 800px;
   height: 600px;
   position: absolute;
@@ -26,9 +30,8 @@ body {
   width: 50px;
   height: 50px;
   position: absolute;
-  bottom: 500px;
-  left: 300px;
-
+  bottom: 300px;
+  left: 375px;
 }
 
 #bird {
@@ -59,7 +62,6 @@ body {
   position: absolute;
   right: 0;
   bottom: 0;
-  
 }
 
 .obstacleTop {
@@ -68,5 +70,11 @@ body {
   position: absolute;
   right: 0;
   /* top: 0; */
+  z-index: 4;
+}
+
+button {
+  position: absolute;
+  top: 580px;
   z-index: 4;
 }

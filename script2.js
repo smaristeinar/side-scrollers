@@ -5,21 +5,20 @@ const obstacles = document.getElementById("obstacles");
 let windowWidth = 800;
 
 let boxinfo = box.getBoundingClientRect();
-console.log(box.style.height)
+console.log(box.style.height);
 let score = 0;
 let counter = 0;
 let obCounter = 0;
 let right = 0;
-let jumpUp = 500;
+let jumpUp = 300;
 
 let gameover = false;
 
-let Sound =  new Audio("flap.mp3");
-let LostSound = new Audio("");
+let Sound = new Audio("flap.mp3");
+let LostSound = new Audio("gameover.wav");
 
 function graivty() {
   setInterval(function () {
-
     if (jumpUp > 0 && !gameover) {
       jumpUp -= 1;
       box.style.bottom = jumpUp + "px";
@@ -56,12 +55,10 @@ document.addEventListener("keyup", function (evt) {
   if (evt.key == "ArrowUp" && !gameover) {
     jumpUp += 30;
     box.style.bottom = jumpUp + "px";
-   
+
     Sound.play();
   }
 });
-
-
 
 function createObstacle() {
   const ob = document.createElement("div");
@@ -112,18 +109,18 @@ function moveObstacles(obId, height, width, obTopId, obTopHeight) {
     if (!gameover) {
       right++;
     }
-    
+
     ob.style.right = right + "px";
     obTop.style.right = right + "px";
-    if (right == windowWidth - 300){
+    if (right == windowWidth - 475) {
       collision(height);
     }
     if (right == 300 && !gameover) {
       createObstacle();
     }
-    if (right <= 350 && right >= 300) {
-      collision(obId, height);
-    }
+    // if (right <= 150 && right >= 100) {
+    //   collision(obId, height);
+    // }
     if (right > 799) {
       ob.remove();
       obTop.remove();
@@ -131,30 +128,40 @@ function moveObstacles(obId, height, width, obTopId, obTopHeight) {
     }
   }, 10);
 }
-function keepScore () {
+function keepScore() {
   setInterval(() => {
     document.getElementById("score").innerHTML = "Score: " + score;
     if (!gameover) {
-      score++
+      score++;
     }
-    
   }, 1000);
 }
 
-let collision = function(boxheigt){
+let collision = function (boxheigt) {
   if (jumpUp < boxheigt) {
-      console.log("lost bot");
-      LostSound.play();
-      gameover = true;
-
-      
+    console.log("lost bot");
+    gameover = true;
+    youLost();
   }
   if (jumpUp > boxheigt + 150) {
-      LostSound.play();
-      gameover = true;
-      console.log("lost top");
-  
+    gameover = true;
+    console.log("lost top");
+    youLost();
   }
+};
+
+function sleep(time) {
+  return new Promise((resolve) => setTimeout(resolve, time));
+}
+
+function youLost() {
+  if (gameover) {
+    // LostSound.play();
+  }
+}
+
+function restart() {
+  location.reload();
 }
 
 // let collision = function(playerPos, ob1height, obright){
@@ -163,13 +170,8 @@ let collision = function(boxheigt){
 //   }
 // }
 
-
 // move();
 
-  graivty();
-  createObstacle();
-  keepScore();
-
-
-
-
+graivty();
+createObstacle();
+keepScore();
