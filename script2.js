@@ -26,30 +26,10 @@ function graivty() {
   }, 15);
 }
 
-// let moveObs = function(){
-//   counter ++;
-//   right +=10;
-//   if (right > windowWidth) {
-//       right = -windowWidth + "px";
-//       obj1.style.right = "100px";
-//       right = 0;
-//     }
-//   obj1.style.right = right + "px";
-//   colCheck();
-// }
 
-function move() {
-  setInterval(function () {
-    // moveObs();
-    console.log();
-  }, 100);
-}
 
-let colCheck = function () {
-  if (right == windowWidth - 300 && jumpUp < 400) {
-    console.log("gameover");
-  }
-};
+
+
 
 document.addEventListener("keyup", function (evt) {
   if (evt.key == "ArrowUp" && !gameover) {
@@ -63,7 +43,7 @@ document.addEventListener("keyup", function (evt) {
 function createObstacle() {
   const ob = document.createElement("div");
   const obTop = document.createElement("div");
-  //ob.innerHTML = `"<img src="pipe.png">"`
+
   ob.id = "ob" + obCounter;
   obTop.id = "obTop" + obCounter;
   ob.classList.add("obstacle");
@@ -86,20 +66,6 @@ function createObstacle() {
   moveObstacles(obId, height, width, obTopId, obTopHeight);
 }
 
-// function createObstacleTop() {
-//   const ob = document.createElement("div");
-//   ob.id = "ob" + obCounter;
-//   ob.classList.add("obstacleTop");
-//   const obId = ob.id;
-//   const height = 50 + Math.floor(Math.random() * 200);
-//   const width = 10 + Math.floor(Math.random() * 20);
-//   ob.style.height = height + "px";
-//   ob.style.width = width + "px";
-
-//   obCounter++;
-//   obstacles.appendChild(ob);
-//   moveObstacles(obId, height, width);
-// }
 
 function moveObstacles(obId, height, width, obTopId, obTopHeight) {
   let right = 0;
@@ -118,9 +84,6 @@ function moveObstacles(obId, height, width, obTopId, obTopHeight) {
     if (right == 300 && !gameover) {
       createObstacle();
     }
-    // if (right <= 150 && right >= 100) {
-    //   collision(obId, height);
-    // }
     if (right > 799) {
       ob.remove();
       obTop.remove();
@@ -156,7 +119,7 @@ function sleep(time) {
 
 function youLost() {
   if (gameover) {
-    // LostSound.play();
+    LostSound.play();
   }
 }
 
@@ -164,13 +127,6 @@ function restart() {
   location.reload();
 }
 
-// let collision = function(playerPos, ob1height, obright){
-//   if (playerPos < ob1height && playerPos > ob1height + 150) {
-//     console.log("GG LOSER ");
-//   }
-// }
-
-// move();
 
 graivty();
 createObstacle();
