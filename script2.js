@@ -121,6 +121,9 @@ function moveObstacles(obId, height, width, obTopId, obTopHeight) {
     if (right == 300 && !gameover) {
       createObstacle();
     }
+    if (right <= 350 && right >= 300) {
+      collision(obId, height);
+    }
     if (right > 799) {
       ob.remove();
       obTop.remove();
@@ -153,6 +156,12 @@ let collision = function(boxheigt){
   
   }
 }
+
+// let collision = function(playerPos, ob1height, obright){
+//   if (playerPos < ob1height && playerPos > ob1height + 150) {
+//     console.log("GG LOSER ");
+//   }
+// }
 
 
 // move();
